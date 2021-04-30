@@ -189,7 +189,7 @@ int main()
   std::cout << "Nacisnij ENTER aby kontynuowac" << std::endl;
   std::cin.ignore(10000, '\n');
 
-  PRO.dlugosci(PRO);
+  PRO.sides(PRO);
   std::cout << "o - obrot prostokata o zadany kat" << std::endl;
   std::cout << "p - przesuniecie prostokata o zadany wektor" << std::endl;
   std::cout << "w - wyswietlenie wspolrzednych wierzcholkow" << std::endl;
@@ -209,7 +209,7 @@ int main()
       int re;
       std::cin >> re; std::cout << std::endl;
       PRO = PRO.rotation(PRO, degr, re);
-      PRO.dlugosci(PRO);
+      PRO.sides(PRO);
 
       if(!ZapisWspolrzednychDoPliku("../datasets/prostokat.dat", PRO)) return 1;
       Lacze.Rysuj();
@@ -220,9 +220,13 @@ int main()
       std::cout << "Twoj wybor? (m - menu) > p" << std::endl 
       << "Wprowadz wspolrzedne wektora translacji w postaci dwoch liczbtzn. wspolrzednej x oraz wspolrzednej y." << std::endl;
       double tmp[SIZE];
-      std::cin >> tmp[0]; std::cout << "\t"; std::cin >> tmp[1]; std::cout << std::endl;
+      std::cin >> tmp[0]; std::cin >> tmp[1]; std::cout << std::endl;
       Vector V(tmp);
       PRO = PRO.translation(PRO, V);
+      if(!ZapisWspolrzednychDoPliku("../datasets/prostokat.dat", PRO)) return 1;
+      Lacze.Rysuj();
+      std::cout << "Nacisnij ENTER aby kontynuowac" << std::endl;
+      std::cin.ignore(10000, '\n');
       break;}
     case 'w':{
       std::cout << "Twoj wybor? (m - menu) > w" << std::endl;

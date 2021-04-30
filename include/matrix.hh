@@ -4,6 +4,7 @@
 #include "vector.hh"
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 
 class Matrix {
 
@@ -14,6 +15,8 @@ public:
     Matrix(double [SIZE][SIZE]);            // Konstruktor klasy
 
     Matrix();                               // Konstruktor klasy
+
+    Matrix(double degr);
 
     Vector operator * (Vector tmp);           // Operator mnożenia przez wektor
 
@@ -28,5 +31,6 @@ std::istream &operator>>(std::istream &in, Matrix &mat);
 
 std::ostream &operator<<(std::ostream &out, Matrix const &mat);
 
+bool operator ==(const Matrix &m1, const Matrix &m2);
 
 

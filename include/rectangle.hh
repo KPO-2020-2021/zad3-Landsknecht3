@@ -12,7 +12,9 @@ class Rectangle
     Rectangle rotation(Rectangle P, double degr, int re);
     Rectangle translation(Rectangle S, Vector v);
     const Vector &operator[] (int index) const;
-    Rectangle dlugosci(Rectangle const &tmp);
+    Rectangle sides(Rectangle const &tmp);
 
 };
 std::ostream &operator << (std::ostream &out, Rectangle const &tmp);
+
+bool operator ==(const Rectangle &p1, const Rectangle &p2);

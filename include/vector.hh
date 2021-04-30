@@ -2,6 +2,7 @@
 
 #include "size.hh"
 #include <iostream>
+#include <iomanip>
 
 
 class Vector {
@@ -33,12 +34,15 @@ public:
     double &operator [] (int index);
 
     double length(const Vector &v1);
-    friend bool operator ==(Vector v1, Vector v2);
+
+    
 
 };
 
 std::ostream &operator << (std::ostream &out, Vector const &tmp);
 
 std::istream &operator >> (std::istream &in, Vector &tmp);
+
+bool operator ==(const Vector &v1, const Vector &v2);
 
 

@@ -155,7 +155,7 @@ double &Vector::operator[](int index) {
  */
 std::ostream &operator << (std::ostream &out, Vector const &tmp) {
     for (int i = 0; i < SIZE; ++i) {
-        out << "[ " << tmp[i] << " ]\n";
+        out << "[ " << std::fixed << std::setprecision(10) << tmp[i] << " ]\n";
     }
     return out;
 }
@@ -174,9 +174,9 @@ std::istream &operator >> (std::istream &in, Vector &tmp) {
     std::cout << std::endl;
     return in;
 }
-bool operator ==(Vector v1, Vector v2)
+bool operator ==(const Vector &v1, const Vector &v2)
 {
-    if(v1[0]==v2[0] && v1[1] == v2[1])
+    if((v1[0] - v2[0]) < epsilon && (v1[1] - v2[1]) < epsilon)
     {return true;}
     else{return false;}
 

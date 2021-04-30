@@ -14,7 +14,13 @@ Matrix::Matrix() {
     }
 }
 
-
+Matrix::Matrix(double degr)
+{
+    value[0][0]= cos(degr*PI/180);
+    value[0][1]= -sin(degr*PI/180);
+    value[1][0]= sin(degr*PI/180);
+    value[1][1]= cos(degr*PI/180);
+}
 /******************************************************************************
  |  Konstruktor parametryczny klasy Matrix.                                   |
  |  Argumenty:                                                                |
@@ -146,4 +152,15 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
         std::cout << std::endl;
     }
     return out;
+}
+bool operator ==(const Matrix &m1, const Matrix &m2)
+{   
+    for(int i = 0; i < SIZE; i++)
+    {
+        for(int j = 0; j < SIZE; j++)
+        {
+            if(m1(i, j) - m2(i, j) > epsilon){return false;}
+        }
+    }
+    return true;
 }

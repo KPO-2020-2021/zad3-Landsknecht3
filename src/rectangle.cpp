@@ -49,12 +49,8 @@ Rectangle::Rectangle()
  */
 Rectangle Rectangle::rotation(Rectangle S, double degr, int re)
 {  
-    double T[SIZE][SIZE];
-    T[0][0]= cos(degr);
-    T[0][1]= -sin(degr);
-    T[1][0]= sin(degr);
-    T[1][1]= cos(degr);
-    Matrix M(T);
+    
+    Matrix M(degr);
     for(int p = 1; p <= re; ++p)
     {
         for(int i = 0; i < 4; ++i)
@@ -65,6 +61,15 @@ Rectangle Rectangle::rotation(Rectangle S, double degr, int re)
     
     return S;
 }
+/******************************************************************************
+ |  Operacja translacji                                                       |
+ |  Argumenty:                                                                |
+ |      S - prostokat na ktorym zostanie dokonana translacja                  |
+ |      tmp - obiekt klasy wektor                                             |
+ |  Zwraca:                                                                   |
+ |      Prostokat przesuniety o wektor                                        |
+ |                                                                            |
+ */
 Rectangle Rectangle::translation(Rectangle S, Vector tmp)
 {   
     
@@ -75,7 +80,14 @@ Rectangle Rectangle::translation(Rectangle S, Vector tmp)
     return S;
 
 }
-
+/******************************************************************************
+ |  Operacja                                                                  |
+ |  Argumenty:                                                                |
+ |      index - index wierzcholka prostokata                                  |
+ |  Zwraca:                                                                   |
+ |      wektor wierzcholka jako stala                                         |
+ |                                                                            |
+ */
 const Vector &Rectangle::operator[] (int index) const
 {
     if (index < 0 || index >= SIZE4) {
@@ -85,7 +97,15 @@ const Vector &Rectangle::operator[] (int index) const
 
 
 
-
+/******************************************************************************
+ |  Operacja wyswietlania                                                     |
+ |  Argumenty:                                                                |
+ |      out - strumien wejsciowy                                              |
+ |      S - prostokat                                                         |
+ |  Zwraca:                                                                   |
+ |      Wyswietla wspolrzedne prostokatu                                      |
+ |                                                                            |
+ */
 std::ostream &operator << (std::ostream &out, Rectangle const &S)
 {
     for (int i = 0; i < SIZE4; ++i)
@@ -101,7 +121,16 @@ std::ostream &operator << (std::ostream &out, Rectangle const &S)
     return out;
 }
 
-Rectangle Rectangle::dlugosci(Rectangle const &S)
+/******************************************************************************
+ |  Operacja porownania i wyswietlania dlugosci bokow                         |
+ |  Argumenty:                                                                |
+ |      S - prostokat                                                         |
+ |  Zwraca:                                                                   |
+ |      Komunikat czy boki sa rowne czy nie, oraz wyswietla wartosci dlugosci |
+ |      tych bokow                                                            |
+ |                                                                            |
+ */
+Rectangle Rectangle::sides(Rectangle const &S)
 {   
     Vector a, b, c, d;
     Vector s1, s2;
@@ -174,4 +203,13 @@ Rectangle Rectangle::dlugosci(Rectangle const &S)
     }
     return S;
     
+}
+bool operator ==(const Rectangle &p1, const Rectangle &p2)
+{   
+    for(int i = 0; i <SIZE4; i++)
+    {
+        if(p1[i] == p2[i]){}
+        else{return false;}
+    }
+    return true;
 }

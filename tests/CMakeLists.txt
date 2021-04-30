@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 3.12)
 set(TESTFILES        # All .cpp files in tests/
     main.cpp
     dummy.cpp
-    testvector.cpp
 )
 
 set(TEST_MAIN unit_tests)   # Default name for test executable (change if you wish).
