@@ -109,3 +109,7 @@ TEST_CASE("REctangle translation")
     CHECK(p == p2);
 
 }
+TEST_CASE("Rectangle rotation")
+{
+    
+}
